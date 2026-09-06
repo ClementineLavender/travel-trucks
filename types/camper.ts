@@ -53,6 +53,4 @@ export type CampersResponse = {
 export type BookingPayload = {
   name: string;
   email: string;
-  date?: string;
-  comment?: string;
 };
