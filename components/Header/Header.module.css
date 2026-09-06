@@ -47,12 +47,15 @@
   line-height: 1;
   font-weight: 500;
   text-decoration: none;
-
   transition: color 0.2s ease;
 }
 
 .navLink:hover,
 .navLink:focus-visible {
+  color: var(--color-accent);
+}
+
+.active {
   color: var(--color-accent);
 }
 
