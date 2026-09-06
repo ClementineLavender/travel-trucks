@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { FreeMode, Thumbs } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
@@ -18,8 +17,10 @@ export default function Gallery({
   name: string;
 }) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
+
   const safeImages = images.filter(Boolean);
-  if (!safeImages.length)
+
+  if (!safeImages.length) {
     return (
       <div
         className={styles.mainImage}
@@ -29,6 +30,7 @@ export default function Gallery({
         <span className={styles.empty}>Image unavailable</span>
       </div>
     );
+  }
 
   return (
     <div className={styles.root}>
@@ -43,17 +45,16 @@ export default function Gallery({
         {safeImages.map((image, index) => (
           <SwiperSlide key={`${image}-${index}`}>
             <div className={styles.mainImage}>
-              <Image
+              <img
                 src={image}
                 alt={`${name} photo ${index + 1}`}
-                fill
-                sizes="(max-width: 800px) 100vw, 640px"
-                priority={index === 0}
+                className={styles.image}
               />
             </div>
           </SwiperSlide>
         ))}
       </Swiper>
+
       {safeImages.length > 1 && (
         <Swiper
           onSwiper={setThumbsSwiper}
@@ -67,7 +68,7 @@ export default function Gallery({
           {safeImages.map((image, index) => (
             <SwiperSlide key={`${image}-thumb-${index}`}>
               <div className={styles.thumb}>
-                <Image src={image} alt="" fill sizes="120px" />
+                <img src={image} alt="" className={styles.thumbImage} />
               </div>
             </SwiperSlide>
           ))}
