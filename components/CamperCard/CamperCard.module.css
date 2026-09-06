@@ -1,6 +1,6 @@
 .card {
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr);
+  grid-template-columns: 219px minmax(0, 1fr);
   gap: 18px;
   min-height: 252px;
   padding: 20px;
@@ -9,10 +9,10 @@
 }
 .imageWrap {
   position: relative;
-  width: 180px;
+  width: 219px;
   height: 240px;
   overflow: hidden;
-  border-radius: 12px;
+  border-radius: 16px;
   background: #eceff1;
 }
 .image {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { FaGasPump, FaMap, FaCogs, FaBed } from "react-icons/fa";
+import { FaMap } from "react-icons/fa";
 import Header from "@/components/Header/Header";
 import Gallery from "@/components/Gallery/Gallery";
 import Rating from "@/components/Rating/Rating";
@@ -42,44 +42,53 @@ const formatLocation = (location: string) => {
 };
 const getEquipment = (camper: Camper) => {
   const amenities = camper.amenities ?? [];
+
   return [
     {
       key: "transmission",
       value: camper.transmission,
       label: formatValue(String(camper.transmission ?? "")),
-      icon: <FaCogs aria-hidden="true" />,
     },
     {
       key: "ac",
       value: camper.AC ?? amenities.includes("ac"),
       label: "AC",
-      icon: null,
     },
     {
       key: "engine",
       value: camper.engine,
       label: formatValue(String(camper.engine ?? "")),
-      icon: <FaGasPump aria-hidden="true" />,
     },
     {
       key: "kitchen",
       value: camper.kitchen ?? amenities.includes("kitchen"),
       label: "Kitchen",
-      icon: null,
     },
     {
       key: "radio",
       value: camper.radio ?? amenities.includes("radio"),
       label: "Radio",
-      icon: null,
     },
     {
       key: "form",
       value: camper.form,
       label: formatValue(String(camper.form ?? "")),
-      icon: <FaBed aria-hidden="true" />,
     },
   ].filter((item) => Boolean(item.value));
+};
+
+const formatUnit = (value: string | number | undefined, unit: string) => {
+  if (value === undefined || value === null || value === "") {
+    return "";
+  }
+
+  const stringValue = String(value).trim();
+
+  if (stringValue.endsWith(unit)) {
+    return `${stringValue.slice(0, -unit.length).trim()} ${unit}`;
+  }
+
+  return `${stringValue} ${unit}`;
 };
 
 export default async function CamperDetailsPage({
@@ -139,7 +148,6 @@ export default async function CamperDetailsPage({
                 <div className={styles.featureGrid}>
                   {equipment.map((item) => (
                     <span className={styles.feature} key={item.key}>
-                      {item.icon}
                       {item.label}
                     </span>
                   ))}
@@ -147,11 +155,11 @@ export default async function CamperDetailsPage({
                 <dl className={styles.specs}>
                   {[
                     ["Form", camper.form && formatValue(camper.form)],
-                    ["Length", camper.length],
-                    ["Width", camper.width],
-                    ["Height", camper.height],
-                    ["Tank", camper.tank],
-                    ["Consumption", camper.consumption],
+                    ["Length", formatUnit(camper.length, "m")],
+                    ["Width", formatUnit(camper.width, "m")],
+                    ["Height", formatUnit(camper.height, "m")],
+                    ["Tank", formatUnit(camper.tank, "l")],
+                    ["Consumption", formatUnit(camper.consumption, "l/100km")],
                   ]
                     .filter(([, value]) => Boolean(value))
                     .map(([label, value]) => (

@@ -36,6 +36,7 @@ export default function Gallery({
     <div className={styles.root}>
       <Swiper
         modules={[Thumbs]}
+        slidesPerView={1}
         spaceBetween={12}
         thumbs={{
           swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,

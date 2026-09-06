@@ -83,6 +83,7 @@
 }
 .specs dd {
   margin: 0;
+  padding-right: 4px;
   color: var(--color-text);
   text-align: right;
 }
