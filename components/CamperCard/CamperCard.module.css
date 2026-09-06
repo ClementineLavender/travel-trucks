@@ -1,0 +1,122 @@
+.card {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 18px;
+  min-height: 252px;
+  padding: 20px;
+  border-radius: 16px;
+  background: var(--color-surface);
+}
+.imageWrap {
+  position: relative;
+  width: 180px;
+  height: 240px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #eceff1;
+}
+.image {
+  object-fit: cover;
+}
+.imageFallback {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: var(--color-muted);
+}
+.body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+.heading h2 {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.price {
+  white-space: nowrap;
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.meta {
+  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+.location {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+.location svg {
+  font-size: 14px;
+}
+.description {
+  margin: 22px 0 18px;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.45;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.features span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 40px;
+  padding: 0 14px;
+  border-radius: 100px;
+  background: #eceef1;
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 500;
+}
+.features svg {
+  font-size: 14px;
+}
+.more {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 141px;
+  height: 48px;
+  margin-top: auto;
+  border-radius: 200px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 500;
+}
+.more:hover,
+.more:focus-visible {
+  background: var(--color-accent-hover);
+}
+@media (max-width: 700px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+  .imageWrap {
+    width: 100%;
+  }
+}

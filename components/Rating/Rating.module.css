@@ -1,0 +1,28 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+.summaryStar {
+  color: var(--color-rating);
+  font-size: 13px;
+}
+.starsRoot {
+  display: inline-flex;
+  gap: 3px;
+  font-size: 14px;
+}
+.star {
+  position: relative;
+  display: inline-flex;
+  color: #d9dee4;
+}
+.starFill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  overflow: hidden;
+  color: var(--color-rating);
+}
