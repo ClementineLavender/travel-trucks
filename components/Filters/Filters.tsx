@@ -7,7 +7,7 @@ import styles from "./Filters.module.css";
 
 const bodyTypes = [
   ["alcove", "Alcove"],
-  ["panel_truck", "Panel Van"],
+  ["panel_van", "Panel Van"],
   ["integrated", "Integrated"],
   ["semi_integrated", "Semi Integrated"],
 ];
@@ -82,7 +82,7 @@ export default function Filters({
           <input
             value={draft.location}
             onChange={(e) => update("location", e.target.value)}
-            placeholder="City"
+            placeholder="Kyiv"
             aria-label="Location"
           />
         </span>
