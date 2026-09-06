@@ -12,6 +12,16 @@ const formatPrice = (price: number) =>
     maximumFractionDigits: 0,
   })}`;
 
+const formatLocation = (location: string) => {
+  const [country, city] = location.split(",").map((part) => part.trim());
+
+  if (!country || !city) {
+    return location;
+  }
+
+  return `${city}, ${country}`;
+};
+
 export default function CamperCard({ camper }: { camper: Camper }) {
   const image = camper.coverImage ?? camper.gallery?.[0];
   const reviewCount = camper.totalReviews ?? camper.reviews?.length ?? 0;
@@ -55,7 +65,7 @@ export default function CamperCard({ camper }: { camper: Camper }) {
 
           <span className={styles.location}>
             <FaMap aria-hidden="true" />
-            {camper.location}
+            {formatLocation(camper.location)}
           </span>
         </div>
 
