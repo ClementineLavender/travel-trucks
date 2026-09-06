@@ -1,5 +1,5 @@
 :root {
-  --color-text: #101727;
+  --color-text: #101828;
   --color-muted: #475467;
   --color-muted-light: #667085;
   --color-border: #d9dde3;
@@ -20,7 +20,7 @@ body {
   margin: 0;
   background: var(--color-white);
   color: var(--color-text);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 a {
