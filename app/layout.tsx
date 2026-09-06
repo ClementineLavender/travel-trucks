@@ -1,33 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header/Header";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import QueryProvider from "@/providers/QueryProvider";
 
 export const metadata: Metadata = {
-  title: "TravelTrucks",
-  description: "Find and rent a camper for your next adventure",
+  title: {
+    default: "TravelTrucks — Campers of your dreams",
+    template: "%s | TravelTrucks",
+  },
+  description:
+    "Find, explore, and book a camper for your next adventure with TravelTrucks.",
+  openGraph: {
+    title: "TravelTrucks — Campers of your dreams",
+    description: "Find, explore, and book a camper for your next adventure.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+    <html lang="en">
       <body>
-        <Header />
-        {children}
+        <QueryProvider>{children}</QueryProvider>
       </body>
     </html>
   );
