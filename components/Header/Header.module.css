@@ -1,24 +1,67 @@
-import Link from "next/link";
-import styles from "./Header.module.css";
+.header {
+  height: 72px;
+  width: 100%;
+  background: var(--color-white);
+  border-bottom: 1px solid var(--color-border);
+}
 
-export default function Header() {
-  return (
-    <header className={styles.header}>
-      <div className={styles.container}>
-        <Link href="/" className={styles.logo}>
-          TravelTrucks
-        </Link>
+.container {
+  position: relative;
 
-        <nav className={styles.nav}>
-          <Link href="/" className={styles.navLink}>
-            Home
-          </Link>
+  width: min(calc(100% - 64px), var(--container));
+  height: 100%;
+  margin: 0 auto;
 
-          <Link href="/catalog" className={styles.navLink}>
-            Catalog
-          </Link>
-        </nav>
-      </div>
-    </header>
-  );
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+
+  color: var(--color-text);
+  font-size: 20px;
+  line-height: 1;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.logoMuted {
+  color: var(--color-muted);
+}
+
+.nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navLink {
+  color: var(--color-text);
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.navLink:hover,
+.navLink:focus-visible {
+  color: var(--color-accent);
+}
+
+@media (max-width: 700px) {
+  .container {
+    width: min(calc(100% - 32px), var(--container));
+  }
+
+  .nav {
+    gap: 20px;
+  }
 }
