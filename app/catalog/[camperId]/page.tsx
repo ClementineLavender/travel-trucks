@@ -31,6 +31,15 @@ const formatValue = (value: string) =>
 const formatPrice = (price: number) =>
   `€${Number(price).toLocaleString("en-US", { maximumFractionDigits: 0 })}`;
 
+const formatLocation = (location: string) => {
+  const [country, city] = location.split(",").map((part) => part.trim());
+
+  if (!country || !city) {
+    return location;
+  }
+
+  return `${city}, ${country}`;
+};
 const getEquipment = (camper: Camper) => {
   const amenities = camper.amenities ?? [];
   return [
@@ -116,7 +125,7 @@ export default async function CamperDetailsPage({
                   />
                   <span className={styles.location}>
                     <FaMap aria-hidden="true" />
-                    {camper.location}
+                    {formatLocation(camper.location)}
                   </span>
                 </div>
                 <div className={styles.price}>{formatPrice(camper.price)}</div>
