@@ -1,0 +1,40 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.item {
+  padding: 20px 16px;
+  border-radius: 16px;
+  background: var(--color-surface);
+}
+.header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.avatar {
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--color-accent);
+  font-size: 20px;
+  font-weight: 700;
+}
+.reviewer h3 {
+  margin: 0 0 5px;
+  font-size: 14px;
+}
+.item p {
+  margin: 16px 0 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+.empty {
+  color: var(--color-muted);
+}
