@@ -48,7 +48,15 @@ export default function CatalogPage() {
     },
   });
 
-  const campers = query.data?.pages.flatMap((page) => page.campers) ?? [];
+  const allCampers = query.data?.pages.flatMap((page) => page.campers) ?? [];
+
+  const visibleCount = query.data ? query.data.pages.length * PAGE_SIZE : 0;
+
+  const campers = allCampers.slice(0, visibleCount);
+
+  const hasMore =
+    query.hasNextPage &&
+    campers.length < (query.data?.pages[0]?.total ?? Infinity);
 
   const applyFilters = (next: CamperFilters) => {
     const params = new URLSearchParams();
@@ -88,7 +96,7 @@ export default function CatalogPage() {
               <CamperList
                 campers={campers}
                 loadingMore={query.isFetchingNextPage}
-                hasMore={Boolean(query.hasNextPage)}
+                hasMore={Boolean(hasMore)}
                 onLoadMore={() => query.fetchNextPage()}
                 onClearFilters={() => router.push(pathname)}
               />
