@@ -11,8 +11,11 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.container}>
         <Link href="/" className={styles.logo} aria-label="TravelTrucks home">
-          <span>Travel</span>
-          <span className={styles.logoMuted}>Trucks</span>
+          <img
+            src="/TravelTrucks.svg"
+            alt="TravelTrucks"
+            className={styles.logoImage}
+          />
         </Link>
 
         <nav className={styles.nav} aria-label="Main navigation">
